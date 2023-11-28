@@ -6,6 +6,11 @@ const user_controller = require('../controllers/userController')
 
 // User Routes //
 
+//GET home page
+router.get('/', function(req, res, next) {
+    res.render('index', { title: 'Express' });
+  });
+
 //Get request for displaying signup form 
 router.get('/signup', user_controller.sign_up);
 
