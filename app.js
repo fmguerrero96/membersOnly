@@ -6,6 +6,7 @@ const logger = require('morgan');
 const passport = require('passport')
 const session = require("express-session");
 const passportConfig = require('./passport-config')
+require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -15,7 +16,7 @@ const app = express();
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://misael:mypassword@cluster0.9125ogb.mongodb.net/members_only?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGODB_URI;
 
 main().catch((err) => console.log(err));
 async function main() {
