@@ -68,7 +68,7 @@ asyncHandler(async (req, res, next) => {
 
         // Save user.
         await user.save();
-        // Redirect to new author record.
+        // Redirect to home page
         res.redirect('/');
       });
     }
