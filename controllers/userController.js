@@ -3,6 +3,7 @@ const User = require('../models/user')
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs")
+const passport = require('passport')
 
 //Display signup form on GET
 exports.sign_up = (req, res, next) => {
@@ -73,3 +74,19 @@ asyncHandler(async (req, res, next) => {
     }
   }),
 ]
+
+//Handle log in on POST
+exports.login_post = passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/"
+  })
+
+//Handle log out on GET
+exports.logout_get =  (req, res, next) => {
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/");
+    });
+  }
