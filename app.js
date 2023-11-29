@@ -4,10 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require('passport')
-//const LocalStrategy = require("passport-local").Strategy;
 const session = require("express-session");
-// const bcrypt = require('bcryptjs');
-// const User = require('./models/user')
 const passportConfig = require('./passport-config')
 
 const indexRouter = require('./routes/index');
