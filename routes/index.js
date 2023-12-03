@@ -23,4 +23,7 @@ router.post("/log-in", user_controller.login_post);
 //GET request for logging out
 router.get("/log-out", user_controller.logout_get);
 
+//Get request for vip secret question
+router.get("/vip", user_controller.vip_get)
+
 module.exports = router;
