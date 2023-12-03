@@ -90,3 +90,8 @@ exports.logout_get =  (req, res, next) => {
       res.redirect("/");
     });
   }
+
+//Handle VIP secrete question on GET
+exports.vip_get = (req, res, next) => {
+    res.render("vipQuestion", {title: "Secret Question"})
+}
