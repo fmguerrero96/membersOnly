@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <h1>Create a new message</h1>
+
+        <form action="" method="POST">
+            <div class="duo">
+                <label for="title">Title: </label>
+                <input name="title", placeholder="Title of your message" type="text">
+            </div>
+
+            <div class="duo">
+                <label for="message">Message: </label>
+                <textarea name="message" placeholder="Your message here" rows="10" cols="50"></textarea>
+            </div>
+
+            <button>Create Message</button>
+        </form>
+    </body>
+</html>
