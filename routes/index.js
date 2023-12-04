@@ -36,4 +36,7 @@ router.post("/vip", user_controller.vip_post)
 //Create new message GET request
 router.get("/createMessage", posts_controller.create_message)
 
+//Create new message on POST
+router.post("/createMessage", posts_controller.create_message_post)
+
 module.exports = router;
