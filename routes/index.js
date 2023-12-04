@@ -8,9 +8,7 @@ const posts_controller = require('../controllers/postsController')
 // User Routes //
 
 //GET home page
-router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Members Only', user: req.user });
-  });
+router.get('/', user_controller.homePage_get);
 
 //Get request for displaying signup form 
 router.get('/signup', user_controller.sign_up);

@@ -10,6 +10,11 @@ exports.sign_up = (req, res, next) => {
     res.render('signup_form', {title: 'Sign Up', errors: null})
 }
 
+//Display Home page and all messages/posts
+exports.homePage_get = (req, res, next) => {
+    res.render('index', { title: 'Members Only', user: req.user })
+}
+
 //Create new user on POST
 exports.create_user = [
 // Validate and sanitize input fields.
