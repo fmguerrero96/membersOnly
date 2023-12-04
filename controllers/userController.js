@@ -94,7 +94,7 @@ exports.logout_get =  (req, res, next) => {
 
 //Handle VIP secrete question on GET
 exports.vip_get = (req, res, next) => {
-    res.render("vipQuestion", {title: "Secret Question"})
+    res.render("vipQuestion", {title: "Secret Question", tryAgain: null})
 }
 
 //Handle VIP secret question POST request
