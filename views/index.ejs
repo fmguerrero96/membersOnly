@@ -15,6 +15,26 @@
 
       <h3><a href="/createMessage">Create New Message</a></h3>
 
+      <% allPosts.forEach(post => { %>
+        <ul>
+          <li>
+            <div class="message">
+              <p><strong>Title:</strong> <%= post.title %></p>
+              <p><strong>Message:</strong> <%= post.message %></p>
+          
+              <% if (user && user.is_vip) { %>
+                <!-- Display full message content to VIP members -->
+                <p><strong>Author:</strong> <%= post.author.username %></p>
+                <p><strong>Possted:</strong> <%= post.time_stamp %></p>
+              <% } else { %>
+                <!-- Display limited content for non-VIP members -->
+                <p><em>Become a VIP member to unlock this hidden content!</em></p>
+              <% } %>
+            </div>
+          </li>
+        </ul>
+      <% }) %>
+
     <% } else { %>
       <h1>please log in</h1>
       <form action="/log-in" method="POST">
