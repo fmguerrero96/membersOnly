@@ -3,7 +3,8 @@ const User = require('../models/user')
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs")
-const passport = require('passport')
+const passport = require('passport');
+const user = require('../models/user');
 
 //Display signup form on GET
 exports.sign_up = (req, res, next) => {
@@ -95,3 +96,25 @@ exports.logout_get =  (req, res, next) => {
 exports.vip_get = (req, res, next) => {
     res.render("vipQuestion", {title: "Secret Question"})
 }
+
+//Handle VIP secret question POST request
+exports.vip_post = asyncHandler(async (req, res, next) => {
+    // Validate and sanitize user answer
+    body('answer', "Please enter an aswer")
+    .trim()
+    .isLength({ min: 1 })
+    .escape()
+    .toLowerCase()
+
+    const userAnswer = req.body.answer.toLowerCase();
+    
+    if(userAnswer != 'true') {
+        //if answer is incorrect, render the secret question again
+        res.render('vipQuestion', {title: "Secret Question", tryAgain: 'Try Again'});
+    } else {
+        //answer is correct
+        const userId = req.user._id; 
+        const updatedUser = await User.findByIdAndUpdate(userId, { is_vip: true }, { new: true });
+        res.redirect('/')
+    }
+})
