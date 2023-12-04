@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const Post = require('../models/post')
 
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
@@ -11,9 +12,12 @@ exports.sign_up = (req, res, next) => {
 }
 
 //Display Home page and all messages/posts
-exports.homePage_get = (req, res, next) => {
-    res.render('index', { title: 'Members Only', user: req.user })
-}
+exports.homePage_get = asyncHandler(async (req, res, next) => {
+    const allPosts = await Post.find({}, "author title message time_stamp")
+    .populate('author').exec()
+
+    res.render('index', { title: 'Members Only', user: req.user, allPosts: allPosts })
+});
 
 //Create new user on POST
 exports.create_user = [
