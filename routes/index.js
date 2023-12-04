@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Require controller modules.
 const user_controller = require('../controllers/userController')
-const posts_controller = require('../controllers/postsConroller')
+const posts_controller = require('../controllers/postsController')
 
 // User Routes //
 
