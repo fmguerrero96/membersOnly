@@ -20,5 +20,13 @@
 
             <button>Create Message</button>
         </form>
+
+        <% if (errors) { %>
+            <ul>
+                <% for(let i = 0; i < errors.length; i++) { %>
+                  <li><%= errors[i].msg %></li>
+                <% } %>      
+              </ul>
+        <% } %>
     </body>
 </html>
