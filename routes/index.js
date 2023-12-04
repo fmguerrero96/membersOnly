@@ -3,6 +3,7 @@ const router = express.Router();
 
 // Require controller modules.
 const user_controller = require('../controllers/userController')
+const posts_controller = require('../controllers/postsConroller')
 
 // User Routes //
 
@@ -28,5 +29,11 @@ router.get("/vip", user_controller.vip_get)
 
 //POST request for vip secret question
 router.post("/vip", user_controller.vip_post)
+
+
+// Mesages/Posts Routes //
+
+//Create new message GET request
+router.get("/createMessage", posts_controller.create_message)
 
 module.exports = router;
