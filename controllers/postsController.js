@@ -46,3 +46,15 @@ exports.create_message_post = [
         }
     })
 ]
+
+exports.delete_post = asyncHandler(async (req, res, next) => {
+    if(req.user && req.user.is_vip) {
+        await Post.findByIdAndDelete(req.params.id)
+        res.redirect('/')
+    } else {
+        res.status(403).send('Only VIP members can delete messages')
+    }
+    if(error){
+        next(error)
+    }
+});
