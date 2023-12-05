@@ -25,7 +25,10 @@
               <% if (user && user.is_vip) { %>
                 <!-- Display full message content to VIP members -->
                 <p><strong>Author:</strong> <%= post.author.username %></p>
-                <p><strong>Possted:</strong> <%= post.time_stamp %></p>
+                <p><strong>Posted:</strong> <%= post.time_stamp %></p>
+                <form action="/delete/<%= post._id %>" method="POST">
+                  <button type="submit">Delete</button>
+                </form>
               <% } else { %>
                 <!-- Display limited content for non-VIP members -->
                 <p><em>Become a VIP member to unlock this hidden content!</em></p>
