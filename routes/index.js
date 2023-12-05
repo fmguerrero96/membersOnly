@@ -37,4 +37,7 @@ router.get("/createMessage", posts_controller.create_message)
 //Create new message on POST
 router.post("/createMessage", posts_controller.create_message_post)
 
+//Delete message on POST
+router.post('/delete/:id', posts_controller.delete_post)
+
 module.exports = router;
